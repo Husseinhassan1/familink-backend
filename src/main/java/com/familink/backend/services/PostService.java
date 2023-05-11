@@ -3,7 +3,7 @@ package com.familink.backend.services;
 import com.familink.backend.controllers.posts.PostRequest;
 import com.familink.backend.controllers.posts.PostResponse;
 import com.familink.backend.models.entities.Post;
-import com.familink.backend.models.entities.UserEntity;
+import com.familink.backend.models.entities.User;
 import com.familink.backend.repositories.PostRepository;
 import com.familink.backend.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -57,7 +57,7 @@ public class PostService {
     }
     @GetMapping
     public  List<PostResponse> getPostsByUsername(String username){ //f
-        UserEntity appUser = userRepository.findByUsername(username)
+        User appUser = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
         return null;
 

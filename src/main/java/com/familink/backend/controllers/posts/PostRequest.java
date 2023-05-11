@@ -2,7 +2,7 @@ package com.familink.backend.controllers.posts;
 
 
 import com.familink.backend.models.entities.Tag;
-import com.familink.backend.models.entities.UserEntity;
+import com.familink.backend.models.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class PostRequest {
     private String privacy;
     private String url;
 
-    private UserEntity user;
+    private User user;
     private File file;
 
     private Tag tag;

@@ -1,5 +1,6 @@
 package com.familink.backend.controllers.auth;
 
+import com.familink.backend.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class RegisterRequest {
     private String username;
     private String email;
     private String password;
+    private Role role;
 }

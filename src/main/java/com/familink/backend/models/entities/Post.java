@@ -42,6 +42,6 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="appUser")
-    private UserEntity appUser;
+    private User appUser;
 
 }
