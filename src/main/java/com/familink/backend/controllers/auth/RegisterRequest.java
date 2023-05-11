@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@CrossOrigin
 public class RegisterRequest {
 
     private String firstname;

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@CrossOrigin
 public class AuthenticationRequest {
 
     private String email;

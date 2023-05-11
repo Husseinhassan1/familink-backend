@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@CrossOrigin
 public class AuthenticationResponse {
 
     @JsonProperty("access_token")
