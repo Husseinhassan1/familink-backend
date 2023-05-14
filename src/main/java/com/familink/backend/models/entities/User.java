@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "app_user", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "username"}))
+@Table(name = "app_user", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "nickname"}))
 @Getter
 @Setter
 @AllArgsConstructor
@@ -32,8 +32,8 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "nickname")
+    private String nickname;
 
     @Column(name = "password")
     private String password;
@@ -54,9 +54,8 @@ public class User implements UserDetails {
         return password;
     }
     @Override
-    public String getUsername() {
-        return email;
-    }
+    public String getUsername() {return email;}
+
 
     @Override
     public boolean isAccountNonExpired() {

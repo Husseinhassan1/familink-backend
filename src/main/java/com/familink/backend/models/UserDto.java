@@ -11,10 +11,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
+
     private Long id;
     private String email;
     private String firstName;
     private String lastName;
-    private String username;
+    private String nickname;
+    private String password;
     private Role role;
+
+    public UserDto(Long id, String email, String firstName, String lastName, String nickname, Role role) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickname = nickname;
+        this.role = role;
+    }
 }
