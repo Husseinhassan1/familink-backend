@@ -11,7 +11,7 @@ public class PostResponse {
     private String title;
     private String url;
     private String description;
-    private String username;
+    private String nickname;
     private Integer likeCount;
     private Integer commentCount;
 

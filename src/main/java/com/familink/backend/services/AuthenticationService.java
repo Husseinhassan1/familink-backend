@@ -39,7 +39,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
         if (StringUtils.isBlank(request.getFirstname())
                 || StringUtils.isBlank(request.getLastname())
-                || StringUtils.isBlank(request.getUsername())
+                || StringUtils.isBlank(request.getNickname())
                 || StringUtils.isBlank(request.getEmail())
                 || StringUtils.isBlank(request.getPassword())) {
             throw new IllegalArgumentException("Invalid request parameters");
@@ -50,8 +50,8 @@ public class AuthenticationService {
         if (repository.existsByEmail(request.getEmail())) {
             throw new IllegalArgumentException("Email already in use");
         }
-        if (repository.existsByUsername(request.getUsername())) {
-            throw new IllegalArgumentException("Username already in use");
+        if (repository.existsByNickname(request.getNickname())) {
+            throw new IllegalArgumentException("Nickname already in use");
         }
         Role role = Role.USER;
         if (request.getRole() != null) {
@@ -60,7 +60,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .firstName(request.getFirstname())
                 .lastName(request.getLastname())
-                .username(request.getUsername())
+                .nickname(request.getNickname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(role)

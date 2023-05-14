@@ -56,9 +56,9 @@ public class PostService {
         return result;
     }
     @GetMapping
-    public  List<PostResponse> getPostsByUsername(String username){ //f
-        User appUser = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(username));
+    public  List<PostResponse> getPostsByUsername(String nickname){ //f
+        User appUser = userRepository.findByNickname(nickname)
+                .orElseThrow(() -> new UsernameNotFoundException(nickname));
         return null;
 
 
