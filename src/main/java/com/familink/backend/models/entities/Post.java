@@ -35,7 +35,7 @@ public class Post {
 //    private TagEntity tagEntity;
 
     @Column(name = "privacy")
-    private boolean privacy;
+    private String privacy;
 
     @ManyToMany(mappedBy = "posts")
     private List<Tag> tags;
