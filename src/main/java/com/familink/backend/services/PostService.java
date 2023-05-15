@@ -1,7 +1,6 @@
 package com.familink.backend.services;
 
-import com.familink.backend.controllers.posts.PostRequest;
-import com.familink.backend.controllers.posts.PostResponse;
+import com.familink.backend.models.PostDto;
 import com.familink.backend.models.entities.Post;
 import com.familink.backend.models.entities.User;
 import com.familink.backend.repositories.PostRepository;
@@ -14,58 +13,81 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class PostService {
 
     private final PostRepository postRepository;
-    private final UserRepository userRepository;
-    private final AuthenticationService authenticationService;
 
-    @PostMapping
-    public void save(PostRequest postRequest){
-        Post post = new Post();
-        post.setTitle(postRequest.getTitle());
-        post.setDescription(postRequest.getDescription());
-        post.setAgeGroup(postRequest.getAgeGroup());
-        post.setAppUser(postRequest.getUser());
-        postRepository.save(post);
-    }
-    @GetMapping
-    public PostResponse getPost(Long id){ //f
-        postRepository.findById(id);
+    public PostService(PostRepository postRepository) {
 
-        return new PostResponse();
+        this.postRepository = postRepository;
     }
-    @GetMapping
-    public List<PostResponse> getAllPosts(){
+
+    public PostDto createPost(PostDto postDto) {
+        Post entity = toEntity(postDto);
+        entity = postRepository.save(entity);
+
+        return toDto(entity);
+    }
+
+    public List<PostDto> getPostList() {
         List<Post> posts = postRepository.findAll();
-        List<PostResponse> result = new ArrayList<>();
+        List<PostDto> result = new ArrayList<>();
         for (Post post : posts) {
-            result.add(new PostResponse(post.getId(),
-                    post.getTitle(),
-                    post.getDescription(),
-                    post.getAgeGroup(),
-                    post.getAppUser().toString(),
-                    null,
-                    null
-                    ));
+            result.add(toDto(post));
         }
-
         return result;
     }
-    @GetMapping
-    public  List<PostResponse> getPostsByUsername(String nickname){ //f
-        User appUser = userRepository.findByNickname(nickname)
-                .orElseThrow(() -> new UsernameNotFoundException(nickname));
-        return null;
 
-
-
+    public PostDto getPost(long id) {
+        Post entity = getEntity(id);
+        return toDto(entity);
     }
 
-    //updatePost
+    public PostDto updatePost(long id, PostDto dto) {
+        Post entity = getEntity(id);
+        entity.setTitle(dto.getTitle());
+        entity.setDescription(dto.getDescription());
+        entity.setAgeGroup(dto.getAgeGroup());
+        entity.setPrivacy(dto.getPrivacy());
+//        entity.setTags(dto.getTags());
+        Post post = postRepository.save(entity);
 
+        return toDto(post);
+    }
+
+    public void deletePost(long id) {
+        postRepository.deleteById(id);
+    }
+
+    private static PostDto toDto(Post post) {
+        return new PostDto(post.getId(),
+                post.getTitle(),
+                post.getDescription(),
+                post.getAgeGroup(),
+//                post.getTags(),
+                post.getPrivacy());
+    }
+
+    private static Post toEntity(PostDto postDto) {
+        Post post = new Post();
+        post.setTitle(postDto.getTitle());
+        post.setDescription(postDto.getDescription());
+//        post.setTags(postDto.getTags());
+        post.setAgeGroup(postDto.getAgeGroup());
+        post.setPrivacy(postDto.getAgeGroup());
+        return post;
+    }
+
+    private Post getEntity(long id) {
+        Optional<Post> postOptional = postRepository.findById(id);
+        if(postOptional.isPresent()) {
+            return postOptional.get();
+        }
+
+        throw new RuntimeException("Post with id:" + id + " does not exist!");
+    }
 
 }
