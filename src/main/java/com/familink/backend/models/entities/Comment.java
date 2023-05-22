@@ -1,5 +1,5 @@
-/*
-package com.familink.backend.repositories;
+
+package com.familink.backend.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,4 +32,3 @@ public class Comment {
     private User user;
 
 }
-*/
