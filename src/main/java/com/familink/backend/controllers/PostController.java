@@ -1,15 +1,10 @@
 package com.familink.backend.controllers;
-
 import com.familink.backend.models.PostDto;
 import com.familink.backend.services.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping("/api/post")
@@ -47,9 +42,9 @@ public class PostController {
     public List<PostDto> getAllPosts(){
         return postService.getPostList();
     }
-//    @GetMapping(params = "username")
-//    public ResponseEntity<List<PostResponse>> getPostsByUsername(@RequestParam String username){
-//        return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
-//    }
+ /*   @GetMapping(params = "username")
+  public ResponseEntity<List<PostResponse>> getPostsByUsername(@RequestParam String username){
+      return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
+    }*/
 
 }

@@ -28,11 +28,7 @@ public class Post {
     @Column(name = "age_group")
     private String ageGroup;
 
-
-
 //    private File file;
-
-//    private TagEntity tagEntity;
 
     @Column(name = "privacy")
     private String privacy;

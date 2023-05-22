@@ -1,16 +1,8 @@
 package com.familink.backend.services;
-
 import com.familink.backend.models.PostDto;
 import com.familink.backend.models.entities.Post;
-import com.familink.backend.models.entities.User;
 import com.familink.backend.repositories.PostRepository;
-import com.familink.backend.repositories.UserRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
