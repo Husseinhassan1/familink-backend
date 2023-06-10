@@ -17,7 +17,7 @@ public class PostDto {
     private String description;
     private String ageGroup;
 
-//    private File file;
+    private String image;
 
  //  private List<Tag> tags;
     private String privacy;
