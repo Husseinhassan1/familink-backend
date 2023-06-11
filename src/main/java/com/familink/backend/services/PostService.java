@@ -45,6 +45,7 @@ public class PostService {
         entity.setAgeGroup(dto.getAgeGroup());
         entity.setPrivacy(dto.getPrivacy());
 //        entity.setTags(dto.getTags());
+        entity.setImage(dto.getImage());
         Post post = postRepository.save(entity);
 
         return toDto(post);
@@ -59,7 +60,8 @@ public class PostService {
                 post.getTitle(),
                 post.getDescription(),
                 post.getAgeGroup(),
-//                post.getTags(),
+    //                post.getTags(),
+                post.getImage(),
                 post.getPrivacy());
     }
 
@@ -70,6 +72,7 @@ public class PostService {
 //        post.setTags(postDto.getTags());
         post.setAgeGroup(postDto.getAgeGroup());
         post.setPrivacy(postDto.getAgeGroup());
+        post.setImage(postDto.getImage());
         return post;
     }
 

@@ -28,10 +28,12 @@ public class Post {
     @Column(name = "age_group")
     private String ageGroup;
 
-//    private File file;
-
     @Column(name = "privacy")
     private String privacy;
+
+    @Lob
+    @Column(name = "image")
+    private String image;
 
     @ManyToMany(mappedBy = "posts")
     private List<Tag> tags;
