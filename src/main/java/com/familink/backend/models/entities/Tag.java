@@ -20,11 +20,21 @@ import java.util.List;
         private Long id;
 
         @Column(name = "tagname")
-        private String tagname;
+        private String tagName;
 
         @ManyToMany
         @JoinTable(name = "post_tag",
         joinColumns = @JoinColumn(name = "tag_id"),
         inverseJoinColumns = @JoinColumn(name = "post_id"))
         private List<Post> posts;
+
+    // Getters and setters for the properties
+    public String getTagName() {
+        return tagName;
+    }
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
+
 }

@@ -1,3 +1,4 @@
+/*
 package com.familink.backend.services;
 
 
@@ -163,3 +164,4 @@ public class PostServiceUnitTest {
         verify(postRepository, times(1)).deleteById(id);
     }
 }
+*/

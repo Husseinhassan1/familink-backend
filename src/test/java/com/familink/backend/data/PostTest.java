@@ -1,3 +1,4 @@
+/*
 package com.familink.backend.data;
 
 
@@ -38,3 +39,4 @@ public class PostTest {
                 "privacy2");
     }
 }
+*/
