@@ -25,3 +25,6 @@ application:
 frontend:
   url: ${FRONTEND_API_URL:http://localhost:4200}
 
+logging:
+  level:
+    org.springframework.security: DEBUG

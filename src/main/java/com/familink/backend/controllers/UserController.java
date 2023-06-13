@@ -17,8 +17,8 @@ public class UserController {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-    @GetMapping("/{userId}/list")
-    public List<UserDto> getUsers(@PathVariable long userId) {
+    @GetMapping("/list")
+    public List<UserDto> getUsers() {
         return customUserDetailsService.getUserList();
     }
     @GetMapping("/{id}")
