@@ -1,10 +1,15 @@
 package com.familink.backend.controllers;
+
+
 import com.familink.backend.models.PostDto;
 import com.familink.backend.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+
 import java.util.List;
 
+import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping("/api/post")

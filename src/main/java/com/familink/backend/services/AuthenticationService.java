@@ -51,7 +51,7 @@ public class AuthenticationService {
             throw new IllegalArgumentException("Email already in use");
         }
         if (repository.existsByNickname(request.getNickname())) {
-            throw new IllegalArgumentException("Nickname already in use");
+            throw new IllegalArgumentException("Username already in use");
         }
         Role role = Role.USER;
         if (request.getRole() != null) {
@@ -134,14 +134,14 @@ public class AuthenticationService {
             var user = this.repository.findByEmail(userEmail)
                     .orElseThrow();
             if (jwtService.isTokenValid(refreshToken, user)) {
-                var accessToken = jwtService.generateToken(user);
+               var accessToken = jwtService.generateToken(user);
                 revokeAllUserTokens(user);
                 saveUserToken(user, accessToken);
-                var authResponse = AuthenticationResponse.builder()
-                        .accessToken(accessToken)
-                        .refreshToken(refreshToken)
-                        .build();
-                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+               var authResponse = AuthenticationResponse.builder()
+                       .accessToken(accessToken)
+                       .refreshToken(refreshToken)
+                       .build();
+               new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
     }

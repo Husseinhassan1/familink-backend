@@ -1,6 +1,5 @@
 package com.familink.backend.models.entities;
 
-
 import com.familink.backend.enums.TokenType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
