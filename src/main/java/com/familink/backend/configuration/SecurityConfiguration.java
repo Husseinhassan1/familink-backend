@@ -70,6 +70,7 @@ public class SecurityConfiguration {
                 .logoutSuccessHandler((request, response, authentication) ->
                         SecurityContextHolder.clearContext()
                 );
+        http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
