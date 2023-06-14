@@ -22,4 +22,7 @@ public class PostDto {
  //  private List<Tag> tags;
     private String privacy;
 
+    public PostDto(long id1, String title1, String description1, String ageGroup1, String privacy1) {
+    }
 }
+
