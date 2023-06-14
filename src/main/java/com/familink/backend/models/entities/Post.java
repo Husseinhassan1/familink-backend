@@ -1,9 +1,11 @@
 package com.familink.backend.models.entities;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+
 
 @Entity
 @Table(name = "post")

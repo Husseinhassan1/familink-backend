@@ -1,15 +1,17 @@
 package com.familink.backend.services;
+
+
 import com.familink.backend.models.PostDto;
 import com.familink.backend.models.entities.Post;
 import com.familink.backend.repositories.PostRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PostService {
-
     private final PostRepository postRepository;
 
     public PostService(PostRepository postRepository) {
@@ -60,7 +62,7 @@ public class PostService {
                 post.getTitle(),
                 post.getDescription(),
                 post.getAgeGroup(),
-    //                post.getTags(),
+                //                post.getTags(),
                 post.getImage(),
                 post.getPrivacy());
     }
@@ -78,7 +80,7 @@ public class PostService {
 
     private Post getEntity(long id) {
         Optional<Post> postOptional = postRepository.findById(id);
-        if(postOptional.isPresent()) {
+        if (postOptional.isPresent()) {
             return postOptional.get();
         }
 

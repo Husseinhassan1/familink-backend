@@ -1,6 +1,5 @@
 package com.familink.backend.models;
 
-import com.familink.backend.models.entities.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +18,6 @@ public class PostDto {
 
     private String image;
 
- //  private List<Tag> tags;
+    //  private List<Tag> tags;
     private String privacy;
-
 }

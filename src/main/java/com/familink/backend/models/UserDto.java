@@ -1,5 +1,6 @@
 package com.familink.backend.models;
 
+
 import com.familink.backend.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
-
     private Long id;
     private String email;
     private String firstName;
     private String lastName;
     private String nickname;
-    private String password;
     private Role role;
+    private String password;
 
     public UserDto(Long id, String email, String firstName, String lastName, String nickname, Role role) {
         this.id = id;

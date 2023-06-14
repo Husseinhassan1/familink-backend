@@ -1,6 +1,7 @@
 package com.familink.backend.configuration;
 
-
+import com.familink.backend.enums.Permission;
+import com.familink.backend.enums.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static com.familink.backend.enums.Permission.*;
-import static com.familink.backend.enums.Role.*;
 import static org.springframework.http.HttpMethod.*;
 
 @Configuration
@@ -33,18 +32,20 @@ public class SecurityConfiguration {
         http
                 .csrf()
                 .disable()
+                .cors()
+                .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**")
                 .permitAll()
-                .requestMatchers("/api/home/**").hasAnyRole(USER.name(), MANAGER.name(), ADMIN.name())
-                .requestMatchers("/api/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
+                .requestMatchers("/api/home/**").hasAnyRole(Role.USER.name(), Role.MANAGER.name(), Role.ADMIN.name())
+                .requestMatchers("/api/management/**").hasAnyRole(Role.ADMIN.name(), Role.MANAGER.name())
 
-                .requestMatchers(GET, "/api/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
-                .requestMatchers(POST, "/api/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
-                .requestMatchers(PUT, "/api/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
-                .requestMatchers(DELETE, "/api/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
+                .requestMatchers(GET, "/api/management/**").hasAnyAuthority(Permission.ADMIN_READ.name(), Permission.MANAGER_READ.name())
+                .requestMatchers(POST, "/api/management/**").hasAnyAuthority(Permission.ADMIN_CREATE.name(), Permission.MANAGER_CREATE.name())
+                .requestMatchers(PUT, "/api/management/**").hasAnyAuthority(Permission.ADMIN_UPDATE.name(), Permission.MANAGER_UPDATE.name())
+                .requestMatchers(DELETE, "/api/management/**").hasAnyAuthority(Permission.ADMIN_DELETE.name(), Permission.MANAGER_DELETE.name())
 
-                .requestMatchers("/api/admin/**").hasRole(ADMIN.name())
+                .requestMatchers("/api/admin/**").hasRole(Role.ADMIN.name())
 
 
 
@@ -54,7 +55,7 @@ public class SecurityConfiguration {
 //                .requestMatchers(DELETE, "/api/admin/**").hasAuthority(ADMIN_DELETE.name())
 
 
-                .requestMatchers("/api/post/**").hasAnyRole(USER.name(), MANAGER.name(), ADMIN.name())
+                .requestMatchers("/api/post/**").hasAnyRole(Role.USER.name(), Role.MANAGER.name(), Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()

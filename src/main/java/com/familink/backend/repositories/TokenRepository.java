@@ -1,6 +1,5 @@
 package com.familink.backend.repositories;
 
-
 import com.familink.backend.models.entities.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,11 +1,7 @@
-
 package com.familink.backend.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import com.familink.backend.models.entities.Post;
-import com.familink.backend.models.entities.User;
-
 
 @Entity
 @Table(name = "comment")
