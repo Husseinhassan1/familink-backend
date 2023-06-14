@@ -5,6 +5,7 @@ import com.familink.backend.mapper.TopicMapper;
 import com.familink.backend.models.TopicDto;
 import com.familink.backend.models.entities.Topic;
 import com.familink.backend.repositories.TopicRepository;
+import exceptions.SpringException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,9 @@ public class TopicService {
                 .collect(toList());
     }
 
-    
+    public TopicDto getTopic(Long id) {
+        Topic topic = topicRepository.findById(id)
+                .orElseThrow(() -> new SpringException("No topic found with ID - " + id));
+        return topicMapper.mapTopicToDto(topic);
+    }
 }
