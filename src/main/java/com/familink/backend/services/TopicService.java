@@ -1,6 +1,7 @@
 package com.familink.backend.services;
 
 
+import com.familink.backend.mapper.TopicMapper;
 import com.familink.backend.models.TopicDto;
 import com.familink.backend.models.entities.Topic;
 import com.familink.backend.repositories.TopicRepository;
@@ -18,10 +19,11 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 public class TopicService {
     private final TopicRepository topicRepository;
+    private final TopicMapper topicMapper;
 
     @Transactional
     public TopicDto save(TopicDto topicDto){
-       Topic save = topicRepository.save(mapTopicDto(topicDto));
+       Topic save = topicRepository.save(topicMapper.mapDtoToTopic(topicDto));
        topicDto.setId(save.getId());
        return topicDto;
     }
@@ -30,24 +32,9 @@ public class TopicService {
     public List<TopicDto> getAll() {
        return topicRepository.findAll()
                 .stream()
-                .map(this::mapToDto)
+                .map(topicMapper::mapTopicToDto)
                 .collect(toList());
     }
 
-    private TopicDto mapToDto(Topic topic) {
-        return TopicDto.builder()
-                .name(topic.getName())
-                .id(topic.getId())
-                .numberOfPosts(topic.getPosts().size())
-                .build();
-    }
-
-    private Topic mapTopicDto(TopicDto topicDto) {
-        return Topic.builder()
-                .name(topicDto.getName())
-                .description(topicDto.getDescription())
-                .build();
-    }
-
-
+    
 }
