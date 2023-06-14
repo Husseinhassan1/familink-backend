@@ -20,12 +20,4 @@ public class UserDto {
     private Role role;
     private String password;
 
-    public UserDto(Long id, String email, String firstName, String lastName, String nickname, Role role) {
-        this.id = id;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nickname = nickname;
-        this.role = role;
-    }
 }
