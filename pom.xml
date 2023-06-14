@@ -8,11 +8,11 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.bigmreach</groupId>
-	<artifactId>bigmreach-backend</artifactId>
+	<groupId>com.familink</groupId>
+	<artifactId>familink-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bigmreach-backend</name>
-	<description>Demo project for Spring Boot</description>
+	<name>familink-backend</name>
+	<description>Familink app</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
