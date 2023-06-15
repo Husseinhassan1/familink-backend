@@ -1,6 +1,7 @@
 package com.familink.backend.controllers;
 
 
+import com.familink.backend.models.PostDto;
 import com.familink.backend.models.TopicDto;
 import com.familink.backend.services.TopicService;
 import lombok.AllArgsConstructor;
@@ -32,9 +33,7 @@ public class TopicController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<TopicDto> getTopic(@PathVariable Long id) {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(topicService.getTopic(id));
+    public TopicDto getPost(@PathVariable Long id){
+        return topicService.getTopic(id);
     }
 }
